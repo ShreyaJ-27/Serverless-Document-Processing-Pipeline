@@ -1,0 +1,16 @@
+﻿INVOICE #INV-2026-0042
+Date: April 15, 2026
+Bill To: Acme Corp, 123 Main St, New York, NY
+
+Description                 Qty    Unit Price    Total
+-------------------------------------------------------
+Cloud Consulting Services    5      ,200.00    ,000.00
+Infrastructure Setup         1      ,500.00    ,500.00
+Support Plan (Annual)        1      ,000.00    ,000.00
+
+Subtotal: ,500.00
+Tax (8%): .00
+Total Due: ,420.00
+
+Payment Terms: Net 30. Please remit to accounts@cloudconsult.io
+Thank you for your business!

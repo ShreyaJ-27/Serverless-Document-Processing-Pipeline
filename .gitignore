@@ -1,0 +1,39 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+.env
+venv/
+.venv/
+pip-wheel-metadata/
+*.egg-info/
+*.egg
+build/
+dist/
+.coverage
+.pytest_cache/
+
+# IDE/editor files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Google Cloud / local config
+.gcloud/
+
+# Frontend artifacts
+frontend/node_modules/
+frontend/dist/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+*~
