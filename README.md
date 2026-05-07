@@ -127,13 +127,13 @@ python -m pip install -r requirements.txt
 ## 2️⃣ Deploy Backend
 
 ```powershell
-cd d:\vibecw
+cd d:\project_folder
 
 gcloud run deploy doc-processor-service `
   --source . `
   --region=us-central1 `
   --allow-unauthenticated `
-  --set-env-vars="PROJECT_ID=vibecw,DATASET_ID=doc_processing_db,TABLE_ID=documents"
+  --set-env-vars="PROJECT_ID=project_folder,DATASET_ID=doc_processing_db,TABLE_ID=documents"
 ```
 
 ---
@@ -141,7 +141,7 @@ gcloud run deploy doc-processor-service `
 ## 3️⃣ Deploy Frontend
 
 ```powershell
-cd d:\vibecw\frontend
+cd d:\project_folder\frontend
 
 gcloud run deploy doc-frontend `
   --source . `
@@ -154,7 +154,7 @@ gcloud run deploy doc-frontend `
 ## 4️⃣ Upload a Document
 
 ```powershell
-gcloud storage cp d:\vibecw\sample.txt gs://<your-bucket-name>/
+gcloud storage cp d:\project_folder\sample.txt gs://<your-bucket-name>/
 ```
 
 ---
