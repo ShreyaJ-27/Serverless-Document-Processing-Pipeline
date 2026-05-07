@@ -1,72 +1,241 @@
-# Serverless Document Processing Pipeline
+# 🚀 Serverless Document Intelligence Pipeline
 
-A polished, production-ready pipeline that turns document uploads into searchable metadata using Cloud Run, Pub/Sub, BigQuery, and a modern frontend.
+> A production-ready, event-driven document processing platform built with Google Cloud, Gemini AI, and modern serverless architecture.
 
-**Live demo**: https://doc-frontend-5502500586.us-central1.run.app
+🌐 **Live Demo:**
+[Serverless Document Intelligence Pipeline](https://doc-frontend-5502500586.us-central1.run.app?utm_source=chatgpt.com)
 
-## Why this matters
+---
 
-This project showcases a fully automated, serverless pipeline for document intelligence:
+## ✨ Overview
 
-- Upload a document to Cloud Storage
-- Trigger a Pub/Sub event
-- Process the document with Gemini metadata extraction or a fallback processor
-- Persist structured results to BigQuery
-- Visualize and filter documents in a responsive web UI
+This project demonstrates a scalable, cloud-native pipeline that automatically transforms uploaded documents into structured, searchable metadata.
 
-## What’s included
+Built using **Cloud Run, Pub/Sub, BigQuery, FastAPI, React, and Gemini AI**, the system processes documents in real time and exposes analytics-ready insights through a clean frontend dashboard.
 
-- `app/` — FastAPI backend with Cloud Pub/Sub push handling and BigQuery ingestion
-- `frontend/` — Vite + React SPA served by nginx with `/api` proxying to the backend
-- `Dockerfile` — Backend container configuration for Cloud Run
-- `deploy.ps1` — Cloud-ready deployment script for backend, frontend, Pub/Sub, and BigQuery
-- `requirements.txt` — Python runtime dependencies
-- `sample.txt` — Sample document for pipeline validation
+The architecture is fully serverless, highly modular, and designed for production deployment workflows.
 
-## Highlights
+---
 
-- **Cloud Run backend** with automated deployment support
-- **Gemini integration** for document classification, language detection, summarization, and tagging
-- **BigQuery storage** for analytics-ready document metadata
-- **Frontend dashboard** with tag filtering and live document results
-- **Resilient fallback mode** when Gemini is unavailable
+# 🏗️ Architecture
 
-## Quick start
+```text
+User Upload
+     │
+     ▼
+Google Cloud Storage
+     │
+     ▼
+Pub/Sub Event Trigger
+     │
+     ▼
+Cloud Run (FastAPI Backend)
+     │
+     ├── Gemini Metadata Extraction
+     │
+     ├── Fallback Processing Logic
+     │
+     ▼
+BigQuery Storage
+     │
+     ▼
+React Dashboard UI
+```
 
-1. Install backend dependencies:
-   ```powershell
-   python -m pip install -r requirements.txt
-   ```
+---
 
-2. Deploy backend to Cloud Run:
-   ```powershell
-   cd d:\vibecw
-   gcloud run deploy doc-processor-service --source . --region=us-central1 --allow-unauthenticated --set-env-vars="PROJECT_ID=vibecw,DATASET_ID=doc_processing_db,TABLE_ID=documents"
-   ```
+# 🔥 Key Features
 
-3. Deploy frontend to Cloud Run:
-   ```powershell
-   cd d:\vibecw\frontend
-   gcloud run deploy doc-frontend --source . --region=us-central1 --allow-unauthenticated
-   ```
+### ⚡ Event-Driven Processing
 
-4. Trigger the pipeline:
-   ```powershell
-   gcloud storage cp d:\vibecw\sample.txt gs://<your-bucket-name>/
-   ```
+Automatically triggers document workflows whenever a file is uploaded to Cloud Storage.
 
-5. Verify health:
-   ```powershell
-   Invoke-WebRequest -Uri https://doc-processor-service-5502500586.us-central1.run.app/health -Method GET
-   ```
+### 🧠 Gemini AI Integration
 
-6. View document output:
-   ```powershell
-   Invoke-WebRequest -Uri https://doc-processor-service-5502500586.us-central1.run.app/documents -Method GET -UseBasicParsing
-   ```
+Extracts:
 
-## Notes for reviewers
+* Document summaries
+* Language detection
+* Classification
+* Smart tags and metadata
 
-- Backend configuration is driven by `PROJECT_ID`, `DATASET_ID`, and `TABLE_ID`
-- Frontend proxy is configured in `frontend/nginx.conf`
-- The project is designed for fast iteration and easy redeployment
+### ☁️ Fully Serverless Deployment
+
+Powered entirely by managed Google Cloud services:
+
+* Cloud Run
+* Pub/Sub
+* BigQuery
+* Cloud Storage
+
+### 📊 Analytics-Ready Storage
+
+Structured metadata is persisted in BigQuery for querying, reporting, and visualization.
+
+### 🎨 Modern Frontend Dashboard
+
+Responsive React interface with:
+
+* Live document listing
+* Tag-based filtering
+* Metadata visualization
+
+### 🛡️ Fault-Tolerant Design
+
+Includes fallback processing when Gemini APIs are unavailable.
+
+---
+
+# 🛠️ Tech Stack
+
+| Category       | Technologies            |
+| -------------- | ----------------------- |
+| Backend        | FastAPI, Python         |
+| Frontend       | React, Vite, nginx      |
+| Cloud Platform | Google Cloud Platform   |
+| AI Layer       | Gemini API              |
+| Messaging      | Pub/Sub                 |
+| Storage        | BigQuery, Cloud Storage |
+| Deployment     | Docker, Cloud Run       |
+
+---
+
+# 📂 Project Structure
+
+```bash
+├── app/                  # FastAPI backend + Pub/Sub handlers
+├── frontend/             # React + Vite frontend application
+├── Dockerfile            # Backend container configuration
+├── deploy.ps1            # Automated deployment script
+├── requirements.txt      # Python dependencies
+├── sample.txt            # Sample document for testing
+└── README.md
+```
+
+---
+
+# 🚀 Getting Started
+
+## 1️⃣ Install Dependencies
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
+---
+
+## 2️⃣ Deploy Backend
+
+```powershell
+cd d:\vibecw
+
+gcloud run deploy doc-processor-service `
+  --source . `
+  --region=us-central1 `
+  --allow-unauthenticated `
+  --set-env-vars="PROJECT_ID=vibecw,DATASET_ID=doc_processing_db,TABLE_ID=documents"
+```
+
+---
+
+## 3️⃣ Deploy Frontend
+
+```powershell
+cd d:\vibecw\frontend
+
+gcloud run deploy doc-frontend `
+  --source . `
+  --region=us-central1 `
+  --allow-unauthenticated
+```
+
+---
+
+## 4️⃣ Upload a Document
+
+```powershell
+gcloud storage cp d:\vibecw\sample.txt gs://<your-bucket-name>/
+```
+
+---
+
+## 5️⃣ Verify Backend Health
+
+```powershell
+Invoke-WebRequest `
+  -Uri https://doc-processor-service-5502500586.us-central1.run.app/health `
+  -Method GET
+```
+
+---
+
+## 6️⃣ View Processed Documents
+
+```powershell
+Invoke-WebRequest `
+  -Uri https://doc-processor-service-5502500586.us-central1.run.app/documents `
+  -Method GET `
+  -UseBasicParsing
+```
+
+---
+
+# 📸 Product Highlights
+
+### 🔎 Smart Metadata Extraction
+
+Automatically generates structured insights from raw documents.
+
+### 📈 Cloud-Native Scalability
+
+Handles asynchronous workloads using event-driven architecture.
+
+### ⚙️ Production-Oriented Design
+
+Includes:
+
+* Containerized deployment
+* Cloud-native scaling
+* Automated infrastructure flow
+* Decoupled services
+
+---
+
+# 💡 Why This Project Stands Out
+
+This project demonstrates practical experience with:
+
+* Modern cloud architecture
+* AI-powered backend systems
+* Event-driven pipelines
+* Full-stack deployment workflows
+* Serverless engineering patterns
+* Production-ready API development
+
+It reflects real-world engineering practices used in scalable SaaS and AI infrastructure platforms.
+
+---
+
+# 🔮 Future Improvements
+
+* OCR support for PDFs and scanned documents
+* Authentication and user-specific dashboards
+* Real-time pipeline monitoring
+* Vector embeddings + semantic search
+* Multi-document batch processing
+
+---
+
+# 👩‍💻 Author
+
+**Shreya Jha**
+Information Science & Engineering Student
+Open Source Contributor • Cloud & AI Enthusiast
+
+---
+
+# ⭐ Live Application
+
+👉 Explore the deployed project here:
+
+[Open Live Demo](https://doc-frontend-5502500586.us-central1.run.app?utm_source=chatgpt.com)
